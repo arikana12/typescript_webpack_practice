@@ -13,6 +13,13 @@ nodule.exports = {
     devServer:{
         static:{
             directory:`${__dirname}/dist`
+        },
+        open:true
+    },
+    module:{
+        rules:{
+            test:/\.ts$/,
+            loader:"ts-loader"
         }
     }
 };
