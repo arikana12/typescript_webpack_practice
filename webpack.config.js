@@ -1,25 +1,29 @@
-nodule.exports = {
-    entry:{
-        bandle:".src/index.ts"
+const path = require('path');
+
+module.exports = {
+  entry: {
+    bundle: './src/index.ts',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  mode: 'development',
+  resolve: {
+    extensions: ['.ts', '.js'],
+  },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
     },
-    output:{
-        Path:`${__dirname}/dist`,
-        filename:"bandle.js"
-    },
-    node:"development",//production
-    resolve:{
-        extensions:[".ts,","js"]
-    },
-    devServer:{
-        static:{
-            directory:`${__dirname}/dist`
-        },
-        open:true
-    },
-    module:{
-        rules:{
-            test:/\.ts$/,
-            loader:"ts-loader"
-        }
-    }
+    open: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+      },
+    ],
+  }
 };
